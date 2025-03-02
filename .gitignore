@@ -1,0 +1,11 @@
+# Ignore Visual Studio/Blazor files
+
+.vs/ 
+bin/ 
+obj/ 
+*.user 
+*.suo 
+*.cache 
+*.log 
+*.exe 
+*.dll 
