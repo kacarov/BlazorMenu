@@ -1,0 +1,12 @@
+﻿@using BlazorMenuComponent.Models
+
+<ul class="menu">
+    @foreach (var item in Items)
+    {
+        <MenuItem Item="item" ParentLevel="0"></MenuItem>
+    }
+</ul>
+
+@code {
+    [Parameter] public List<Item> Items { get; set; }
+}

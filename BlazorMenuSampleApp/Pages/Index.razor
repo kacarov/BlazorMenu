@@ -1,0 +1,68 @@
+﻿@page "/"
+
+<Menu Items="menuItems"></Menu>
+
+@code {
+    private readonly List<Item> menuItems =
+                                            [
+        new Item
+        {
+            Name = "Item 1",
+            SubItems =
+            [
+                new Item { Name = "Item 1.1" },
+                new Item
+                {
+                    Name = "Item 1.2",
+                    SubItems =
+                    [
+                        new Item { Name = "Item 1.2.1" },
+                        new Item
+                        {
+                            Name = "Item 1.2.2",
+                            SubItems =
+                            [
+                                new Item
+                                {
+                                    Name = "1.2.2.1",
+                                    SubItems =
+                                    [
+                                        new Item{ Name = "1.2.2.1.1"}
+                                    ]
+                                },
+                                new Item
+                                {
+                                    Name = "1.2.2.2 very loooooooooooooooooooooooooooooooooooooooooooong item name" ,
+                                    SubItems =
+                                    [
+                                        new Item{Name = "1.2.2.2.1"},
+                                        new Item{Name = "1.2.2.2.2"}
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        new Item
+        {
+            Name = "Item 2",
+            SubItems =
+            [
+                new Item
+                {
+                    Name = "Item 2.1",
+                    SubItems =
+                    [
+                        new Item { Name = "Item 2.1.1" },
+                        new Item { Name = "Item 2.1.2" }
+                    ]
+                },
+                new Item { Name = "Item 2.2"
+                }
+            ]
+        },
+        new Item { Name = "Item 3" }
+    ];
+}

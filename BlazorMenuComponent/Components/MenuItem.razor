@@ -1,0 +1,45 @@
+﻿@using BlazorMenuComponent.Models
+
+@{
+    var isLevelZero = ParentLevel == 0;
+    var arrowClass = isLevelZero ? "arrow-down" : "arrow-right";
+    var arrowSymbol = isLevelZero ? "▼" : "►";
+    var centerContentClass = isLevelZero ? "center-content" : string.Empty;
+}
+
+<li class="menu-item @centerContentClass"
+    @onmouseenter="ShowSubMenu"
+    @onmouseleave="HideSubMenu">
+    <span>@Item.Name</span>
+
+    @if (Item.SubItems?.Any() == true)
+    {
+        @if (ParentLevel == 0)
+        {
+            <span class="arrow @arrowClass">@arrowSymbol</span>
+        }
+        else
+        {
+            <span class="arrow arrow-right">►</span>
+        }
+    }
+
+    @if (Item.IsExpanded && Item.SubItems?.Any() == true)
+    {
+        <ul class="submenu">
+            @foreach (var subItem in Item.SubItems)
+            {
+                <MenuItem Item="subItem" ParentLevel="@(ParentLevel + 1)"></MenuItem>
+            }
+        </ul>
+    }
+</li>
+
+@code {
+    [Parameter] public Item Item { get; set; }
+    [Parameter] public int ParentLevel { get; set; }
+
+    private void ShowSubMenu() => Item.IsExpanded = true;
+    private void HideSubMenu() => Item.IsExpanded = false;
+    private string GetItemClass() => ParentLevel == 0 ? "center-content" : string.Empty;
+}
